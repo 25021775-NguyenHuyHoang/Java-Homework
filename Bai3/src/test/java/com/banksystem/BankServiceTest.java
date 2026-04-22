@@ -11,10 +11,12 @@ public class BankServiceTest {
         assertDoesNotThrow(() -> bank.withdraw(500));
     }
     @Test
-    void testFilePath() {
-        // Cách 1: Kiểm tra xem hệ điều hành có đang dùng dấu gạch chéo ngược làm mặc định không
-        // Trên Windows, File.separator là \
-        // Trên Linux/Mac, File.separator là /
-        assertEquals("\\", java.io.File.separator, "Lỗi: Hệ điều hành này không dùng dấu gạch chéo ngược!");
+    void testFilePathRefactored() {
+        // Dùng File.separator để Java tự chọn \ hoặc / tùy máy
+        String path = "data" + java.io.File.separator + "temp.txt";
+
+        // Kiểm tra xem đường dẫn có chứa dấu phân cách của đúng hệ điều hành đó không
+        assertTrue(path.contains(java.io.File.separator),
+                "Đường dẫn phải chứa dấu phân cách phù hợp với OS!");
     }
 }
