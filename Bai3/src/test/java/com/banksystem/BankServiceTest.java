@@ -11,6 +11,11 @@ public class BankServiceTest {
         assertDoesNotThrow(() -> bank.withdraw(500));
     }
     @Test
+    void testWithdrawOverBalance() {
+        BankService bank = new BankService();
+        assertDoesNotThrow(() -> bank.withdraw(2000));
+    }
+    @Test
     void testFilePathRefactored() {
         // Dùng File.separator để Java tự chọn \ hoặc / tùy máy
         String path = "data" + java.io.File.separator + "temp.txt";
