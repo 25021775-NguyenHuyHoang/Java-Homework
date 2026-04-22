@@ -10,4 +10,10 @@ public class BankServiceTest {
         // Kiểm tra xem rút 500 có bị lỗi không (giả sử số dư ban đầu 1000)
         assertDoesNotThrow(() -> bank.withdraw(500));
     }
+    @Test
+    void testFilePath() {
+        // Cố tình dùng dấu gạch chéo ngược kiểu Windows
+        String path = "C:\\data\\temp.txt";
+        assertTrue(path.contains("\\"));
+    }
 }
