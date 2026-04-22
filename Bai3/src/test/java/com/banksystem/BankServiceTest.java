@@ -12,8 +12,9 @@ public class BankServiceTest {
     }
     @Test
     void testFilePath() {
-        // Cố tình dùng dấu gạch chéo ngược kiểu Windows
-        String path = "C:\\data\\temp.txt";
-        assertTrue(path.contains("\\"));
+        // Cách 1: Kiểm tra xem hệ điều hành có đang dùng dấu gạch chéo ngược làm mặc định không
+        // Trên Windows, File.separator là \
+        // Trên Linux/Mac, File.separator là /
+        assertEquals("\\", java.io.File.separator, "Lỗi: Hệ điều hành này không dùng dấu gạch chéo ngược!");
     }
 }
