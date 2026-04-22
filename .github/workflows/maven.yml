@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI with Maven Matrix and JaCoCo
 
 on:
   push:
@@ -10,8 +10,10 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest] # Chạy trên 3 hệ điều hành
-    runs-on: ${{ matrix.os }} # Biến os sẽ thay đổi theo matrix
+        os: [ubuntu-latest, windows-latest, macos-latest] # Chạy trên 3 hệ điều hành cùng lúc
+
+    runs-on: ${{ matrix.os }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -20,6 +22,16 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: maven
 
-      - name: Build with Maven
-        run: mvn -B package --file Bai3/pom.xml
+      - name: Build with Maven and Check Coverage
+        # Lệnh verify sẽ kích hoạt JaCoCo check mức 80% như đã cấu hình trong pom.xml
+        run: mvn -B verify --file Bai3/pom.xml
+
+      - name: Upload JaCoCo Report
+        # Chỉ cần upload report từ một máy (thường là ubuntu) để tránh trùng lặp, hoặc upload cả 3
+        if: always() # Luôn chạy bước này kể cả khi test fail để bạn xem report lỗi ở đâu
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report-${{ matrix.os }}
+          path: Bai3/target/site/jacoco/
