@@ -19,3 +19,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B package --file Bai3/pom.xml
+               - name: Upload a Build Artifact
+               uses: actions/upload-artifact@v3
+               with:
+                 name: package-bai3
+                 path: Bai3/target/*.jar
