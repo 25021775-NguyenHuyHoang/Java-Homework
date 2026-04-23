@@ -13,6 +13,10 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest] # Chạy trên 3 hệ điều hành cùng lúc
 
     runs-on: ${{ matrix.os }}
+    # Cấp quyền để Bot có thể viết bình luận vào Pull Request
+    permissions:
+      contents: read
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v4
@@ -23,6 +27,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
+          cache-dependency-path: 'Bai3/pom.xml'
 
       - name: Build with Maven and Check Coverage
         # Lệnh verify sẽ kích hoạt JaCoCo check mức 80% như đã cấu hình trong pom.xml
@@ -35,3 +40,8 @@ jobs:
         with:
           name: jacoco-report-${{ matrix.os }}
           path: Bai3/target/site/jacoco/
+      - name: Run Checkstyle and Review
+        uses: dbelyaev/action-checkstyle@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: warning # Bot sẽ cảnh báo nếu code xấu
