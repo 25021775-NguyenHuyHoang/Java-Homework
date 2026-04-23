@@ -46,4 +46,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: warning # Bot sẽ cảnh báo nếu code xấu
           fail_on_error: false # dòng này để nếu có lỗi nó vẫn đẩy lên được
-          workdir: Bai3 # tránh việc Bot bị lạc
+          directory: Bai3/src/main/java/

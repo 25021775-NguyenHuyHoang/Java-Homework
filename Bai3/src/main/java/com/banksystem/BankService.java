@@ -4,23 +4,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class BankService {
-    private static final Logger logger = LoggerFactory.LoggerFactory.getLogger(BankService.class);
-
-    // Loi 1: Ten bien co dau gach duoi va viet hoa (Sai quy tac Java)
-    private double balance_Tai_Khoan = 1000.0;
+    private static final Logger logger = LoggerFactory.getLogger(BankService.class);
+    private double balance = 1000.0; // Số dư mặc định
 
     public void withdraw(double amount) {
-        // Loi 2: Thieu khoang trang sau 'if' va quanh dau '>'
-        if(amount>balance_Tai_Khoan) {
-            logger.error("Giao dich that bai: So du khong du.");
+        if (amount > balance) {
+            // Sử dụng mức độ ERROR cho lỗi nghiêm trọng
+            logger.error("Giao dịch thất bại: Số dư không đủ. Cần rút: {}, Hiện có: {}", amount, balance);
         } else {
-            balance_Tai_Khoan -= amount;
-            logger.info("Giao dich thanh cong.");
+            balance -= amount;
+            // Sử dụng mức độ INFO cho hoạt động bình thường
+            logger.info("Giao dịch thành công. Số dư còn lại: {}", balance);
         }
-    }
-
-    // Loi 3: Ten phuong thuc co dau gach duoi
-    public double get_Balance() {
-        return balance_Tai_Khoan;
     }
 }
