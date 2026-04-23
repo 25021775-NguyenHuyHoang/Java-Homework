@@ -41,9 +41,11 @@ jobs:
           name: jacoco-report-${{ matrix.os }}
           path: Bai3/target/site/jacoco/
       - name: Run Checkstyle and Review
+        # Dòng này giúp bỏ qua lỗi trên Mac/Windows và chỉ chạy trên Ubuntu
+        if: matrix.os == 'ubuntu-latest'
         uses: dbelyaev/action-checkstyle@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           level: warning # Bot sẽ cảnh báo nếu code xấu
           fail_on_error: false # dòng này để nếu có lỗi nó vẫn đẩy lên được
-          directory: Bai3/src/main/java/
+          workdir: Bai3
