@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8279bffe-f289-4e9c-a0d0-dcf54b80e845" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bai3/src/main/java/com/banksystem/BankService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bai3/src/main/java/com/banksystem/BankService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bai3/src/test/java/com/banksystem/BankServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bai3/src/test/java/com/banksystem/BankServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +42,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "test-checkstyle",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "C:/Users/HUY HOANG/IdeaProjects/Week9/src/Main.java",
     "project.structure.last.edited": "Modules",
@@ -56,7 +53,6 @@
 }]]></component>
   <component name="RunManager">
     <configuration name="MathUtilsTest.testAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Bai1" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="MathUtilsTest" />
       <option name="METHOD_NAME" value="testAdd" />
